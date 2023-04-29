@@ -58,7 +58,10 @@ h1{
 .App-link {
   color: #61dafb;
 }
-
+.input{
+  font-size: 30px;
+  color: aliceblue;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

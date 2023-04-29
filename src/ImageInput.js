@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export default function ImageInput()
 {
     const [file, setFile] = useState("");
+    const [number,setNumber]=useState("");
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
@@ -39,16 +40,20 @@ export default function ImageInput()
                 throw data;
             }else{
                 console.log(data.output);
+                setNumber("Your Input is "+data.output)
             }
         }catch(err){
             console.log("Error: " + err.message);
         }
     }
 
-    return <form onSubmit={handleSubmit} className="form">
+    return <>
+        <form onSubmit={handleSubmit} className="form">
         <label>Upload an image of single digit</label>
         <input type="file" onChange={handleChange} accept="image/*" capture/>
         <img src={file} className="input-image-display"/>
         <button type="submit" className="btn btn-lg btn-danger">Recognise</button>
     </form>
+        <p className="input">{number}</p>
+    </>
 }
